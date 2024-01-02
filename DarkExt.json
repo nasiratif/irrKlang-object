@@ -1,0 +1,1168 @@
+{
+	// 4-character identifer that uniquely identifies your extension.
+	// Can be letters, numbers, or punctuation, but must be 4 ASCII characters.
+	"Identifier": "IRRK",
+	"Dependencies": "",
+	"US English": {
+		"About": {
+			"Name": "irrKlang object",
+			"Author": "@nasirfoxx (Nasir 'Nassic' W.)",
+			"Copyright": "Fusion Extension by \u00A9 Nasir 'Nassic' W. 2023-2024, irrKlang library by \u00A9 Nikolaus Gebhardt / Ambiera 2001-2020.",
+			"Comment": "Allows you to use the irrKlang audio library in your Fusion application.\n Not to be used in commercial applications.\n (Extension version 1.0, irrKlang version 1.6.0)",
+			"Help": "Help/irrKlang/irrKlang_object.html",
+			"URL": "https://community.clickteam.com/user/36199-nasirfoxx/"
+		},
+		"ActionMenu": [
+			[ 69, "Create irrKlang device" ],
+			"---",
+			[
+				"2D sounds",
+				[ 0, "Play a 2D sound" ],
+				[ 1, "Play a looping 2D sound" ]
+			],
+			[
+				"3D sounds",
+				[ 3, "Play a 3D sound" ],
+				[ 4, "Play a looping 3D sound" ],
+				"---",
+				[ 5, "Set listener position/rotation/velocity" ],
+				[ 6, "Set 3D sound position" ],
+				[ 7, "Set sound minimum distance" ],
+				[ 8, "Set sound maximum distance" ],
+				[ 9, "Set rolloff factor" ],
+				[ 10, "Set doppler parameters" ],
+				[ 11, "Set sound velocity" ]
+			],
+			"---",
+			[ 12, "Set master volume" ],
+			[ 13, "Set sound volume" ],
+			[ 2, "Stop a sound" ],
+			[ 14, "Pause a sound" ],
+			[ 15, "Unpause a sound" ],
+			[ 16, "Pause all sounds" ],
+			[ 17, "Unpause all sounds" ],
+			[ 18, "Set sound playback position" ],
+			[ 19, "Set sound playback speed" ],
+			[ 20, "Set sound pan" ],
+			[
+				"Modify sounds by ID",
+				[
+					"3D sounds",
+					[ 22, "Set 3D sound position by ID" ],
+					[ 23, "Set sound minimum distance by ID" ],
+					[ 24, "Set sound maximum distance by ID" ],
+					[ 25, "Set sound velocity by ID" ]
+				],
+				"---",
+				[ 21, "Stop a sound by ID" ],
+				[ 26, "Pause a sound by ID" ],
+				[ 27, "Unpause a sound by ID" ],
+				[ 28, "Set sound playback position by ID" ],
+				[ 29, "Set sound playback speed by ID" ],
+				[ 30, "Set sound pan by ID" ],
+				[ 31, "Set sound volume by ID" ],
+				[
+					"Sound effects",
+					[ 50, "Enable chorus sound effect for a sound by ID" ],
+					[ 51, "Set chorus parameters by ID" ],
+					"---",
+					[ 52, "Enable compressor sound effect for a sound by ID" ],
+					[ 53, "Set compressor parameters by ID" ],
+					"---",
+					[ 54, "Enable echo sound effect for a sound by ID" ],
+					[ 55, "Set echo parameters by ID" ],
+					"---",
+					[ 56, "Enable distortion sound effect for a sound by ID" ],
+					[ 57, "Set distortion parameters by ID" ],
+					"---",
+					[ 58, "Enable flanger sound effect for a sound by ID" ],
+					[ 59, "Set flanger parameters by ID" ],
+					"---",
+					[ 60, "Enable gargle sound effect for a sound by ID" ],
+					[ 61, "Set gargle parameters by ID" ],
+					"---",
+					[ 62, "Enable Interactive 3D Audio Level 2 reverbation sound effect for a sound by ID" ],
+					[ 63, "Set Interactive 3D Audio Level 2 reverbation parameters by ID" ],
+					"---",
+					[ 64, "Enable parametic equalizer sound effect for a sound by ID" ],
+					[ 65, "Set parametic equalizer parameters by ID" ],
+					"---",
+					[ 66, "Enable waves reverb sound effect for a sound by ID" ],
+					[ 67, "Set waves reverb parameters by ID" ]
+				]
+			],
+			[
+				"Sound effects",
+				[ 32, "Enable chorus sound effect for a sound" ],
+				[ 33, "Set chorus parameters" ],
+				"---",
+				[ 34, "Enable compressor sound effect for a sound" ],
+				[ 35, "Set compressor parameters" ],
+				"---",
+				[ 36, "Enable echo sound effect for a sound" ],
+				[ 37, "Set echo parameters" ],
+				"---",
+				[ 38, "Enable distortion sound effect for a sound" ],
+				[ 39, "Set distortion parameters" ],
+				"---",
+				[ 40, "Enable flanger sound effect for a sound" ],
+				[ 41, "Set flanger parameters" ],
+				"---",
+				[ 42, "Enable gargle sound effect for a sound" ],
+				[ 43, "Set gargle parameters" ],
+				"---",
+				[ 44, "Enable Interactive 3D Audio Level 2 reverbation sound effect for a sound" ],
+				[ 45, "Set Interactive 3D Audio Level 2 reverbation parameters" ],
+				"---",
+				[ 46, "Enable parametic equalizer sound effect for a sound" ],
+				[ 47, "Set parametic equalizer parameters" ],
+				"---",
+				[ 48, "Enable waves reverb sound effect for a sound" ],
+				[ 49, "Set waves reverb parameters" ]
+			],
+			[
+				"Microphone",
+				[ 68, "Create microphone recorder" ],
+				"---",
+				[ 70, "Start recording microphone" ],
+				[ 71, "Stop recording microphone" ],
+				[ 72, "Save last microphone recording to WAV file" ]
+			],
+			"---",
+			[ 73, "Load plugins from a folder" ]
+		],
+		"ConditionMenu": [
+			[ 0, "Is irrKlang device created?" ],
+			[ 5, "Is microphone recorder created?" ],
+			"---",
+			[ 1, "Is a specific sound playing?" ],
+			[ 2, "Is a specific sound paused?" ],
+			[
+				"Check sounds by ID",
+				[ 3, "Is a specific sound ID playing?" ],
+				[ 4, "Is a specific sound ID paused?" ]
+			]
+		],
+		"ExpressionMenu": [
+			[
+				"Listener",
+				[ 0, "Get the listener's X position" ],
+				[ 1, "Get the listener's Y position" ],
+				[ 2, "Get the listener's Z position" ],
+				"---",
+				[ 3, "Get the listener's X rotation" ],
+				[ 4, "Get the listener's Y rotation" ],
+				[ 5, "Get the listener's Z rotation" ],
+				"---",
+				[ 15, "Get the listener's X velocity" ],
+				[ 16, "Get the listener's Y velocity" ],
+				[ 17, "Get the listener's Z velocity" ]
+			],
+			[
+				"3D sounds",
+				[ 6, "Get a sound's X position" ],
+				[ 7, "Get a sound's Y position" ],
+				[ 8, "Get a sound's Z position" ],
+				"---",
+				[ 9, "Get a sound's minimum distance" ],
+				[ 10, "Get a sound's maximum distance" ],
+				"---",
+				[ 11, "Get a sound's X velocity" ],
+				[ 12, "Get a sound's Y velocity" ],
+				[ 13, "Get a sound's Z velocity" ]
+			],
+			"---",
+			[ 14, "Get master volume" ],
+			[ 18, "Get a sound's current volume" ],
+			[ 19, "Get a sound's current playback position" ],
+			[ 20, "Get a sound's length" ],
+			[ 21, "Get a sound's current playback speed" ],
+			[ 22, "Get a sound's current pan" ],
+			[
+				"By ID:",
+				[
+					"3D sounds",
+					[ 23, "Get a sound's X position by ID" ],
+					[ 24, "Get a sound's Y position by ID" ],
+					[ 25, "Get a sound's Z position by ID" ],
+					"---",
+					[ 26, "Get a sound's minimum distance by ID" ],
+					[ 27, "Get a sound's maximum distance by ID" ],
+					"---",
+					[ 28, "Get a sound's X velocity by ID" ],
+					[ 29, "Get a sound's Y velocity by ID" ],
+					[ 30, "Get a sound's Z velocity by ID" ]
+				],
+				"---",
+				[ 31, "Get a sound's current volume by ID" ],
+				[ 32, "Get a sound's current playback position by ID" ],
+				[ 33, "Get a sound's length by ID" ],
+				[ 34, "Get a sound's current playback speed by ID" ],
+				[ 35, "Get a sound's current pan by ID" ]
+			],
+			"---",
+			[
+				"Microphones",
+				[ 36, "Get number of microphones" ],
+				[ 37, "Get a microphone's description" ],
+				[ 38, "Get a microphone's device ID" ]
+			],
+			[
+				"Sound devices",
+				[ 39, "Get number of sound devices" ],
+				[ 40, "Get a sound device's description" ],
+				[ 41, "Get a sound device's ID" ]
+			],
+			"---",
+			[ 42, "Get active device driver name" ]
+		],
+		"Actions": [
+			{
+				"Title": "Play 2D sound %0 at ID %1, sound effects %2",
+				"Parameters": [
+					[ "Filename", "Enter the path to the audio file to play" ],
+					[ "Integer", "Enter an ID used to identify the sound (optional, keep at 0 if you won't use this)" ],
+					[ "Integer", "Enable sound effect support for this sound? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Play a looping 2D sound %0 at ID %1, sound effects %2",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to play" ],
+					[ "Integer", "Enter an ID used to identify the sound (optional, keep at 0 if you won't use this)" ],
+					[ "Integer", "Enable sound effect support for this sound? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Stop sound %0",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to stop" ]
+				]
+			},
+			{
+				"Title": "Play 3D sound %0 at (%1, %2, %3), ID %4, sound effects %5",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to play" ],
+					[ "Float", "Enter the X position of the sound" ],
+					[ "Float", "Enter the Y position of the sound" ],
+					[ "Float", "Enter the Z position of the sound" ],
+					[ "Integer", "Enter an ID used to identify the sound (optional, keep at 0 if you won't use this)" ],
+					[ "Integer", "Enable sound effect support for this sound? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Play looping 3D sound %0 at (%1, %2, %3), ID %4, sound effects %5",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to play" ],
+					[ "Float", "Enter the X position of the sound" ],
+					[ "Float", "Enter the Y position of the sound" ],
+					[ "Float", "Enter the Z position of the sound" ],
+					[ "Integer", "Enter an ID used to identify the sound (optional, keep at 0 if you won't use this)" ],
+					[ "Integer", "Enable sound effect support for this sound? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set listener position to (%0, %1, %2), looking in (%3, %4, %5), velocity (%6, %7, %8)",
+				"Parameters": [
+					[ "Float", "Enter the new X position of the listener" ],
+					[ "Float", "Enter the new Y position of the listener" ],
+					[ "Float", "Enter the new Z position of the listener" ],
+					[ "Float", "Enter the new X rotation (looking direction) of the listener" ],
+					[ "Float", "Enter the new Y rotation (looking direction) of the listener" ],
+					[ "Float", "Enter the new Z rotation (looking direction) of the listener" ],
+					[ "Float", "Enter the X velocity per second of the listener (optional, keep this at 0 if you're not using doppler effects)" ],
+					[ "Float", "Enter the Y velocity per second of the listener (optional, keep this at 0 if you're not using doppler effects)" ],
+					[ "Float", "Enter the Z velocity per second of the listener (optional, keep this at 0 if you're not using doppler effects)" ]
+				]
+			},
+			{
+				"Title": "Set 3D sound position of %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new X position of the sound" ],
+					[ "Float", "Enter the new Y position of the sound" ],
+					[ "Float", "Enter the new Z position of the sound" ]
+				]
+			},
+			{
+				"Title": "Set minimum distance of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new minimum distance of the sound" ]
+				]
+			},
+			{
+				"Title": "Set maximum distance of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new maximum distance of the sound" ]
+				]
+			},
+			{
+				"Title": "Set rolloff factor to %0",
+				"Parameters": [
+					[ "Float", "Enter the new rolloff factor for 3D sounds, ranging from 0 to 10" ]
+				]
+			},
+			{
+				"Title": "Set doppler parameters to (doppler factor %0, distance factor %1)",
+				"Parameters": [
+					[ "Float", "Enter the new doppler factor (default: 1.0)" ],
+					[ "Float", "Enter the new distance factor (default: 1.0)" ]
+				]
+			},
+			{
+				"Title": "Set sound velocity of %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new X velocity of the sound" ],
+					[ "Float", "Enter the new Y velocity of the sound" ],
+					[ "Float", "Enter the new Z velocity of the sound" ]
+				]
+			},
+			{
+				"Title": "Set master volume to %0",
+				"Parameters": [
+					[ "Float", "Enter the new master volume (from 0 to 1, floats accepted)" ]
+				]
+			},
+			{
+				"Title": "Set sound volume of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new sound volume (from 0 to 1, floats accepted)" ]
+				]
+			},
+			{
+				"Title": "Pause sound %0",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to pause" ]
+				]
+			},
+			{
+				"Title": "Unpause sound %0",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to unpause" ]
+				]
+			},
+			{
+				"Title": "Pause all sounds"
+			},
+			{
+				"Title": "Unpause all sounds"
+			},
+			{
+				"Title": "Set playback position of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enter the new playback position in milliseconds" ]
+				]
+			},
+			{
+				"Title": "Set playback speed of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new playback speed (default: 1.0)" ]
+				]
+			},
+			{
+				"Title": "Set pan of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter the new sound pan (takes a value between -1 and 1, 0 being center, floats accepted)" ]
+				]
+			},
+			{
+				"Title": "Stop sound by ID %0",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to stop" ]
+				]
+			},
+			{
+				"Title": "Set 3D sound position of sound ID %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new X position of the sound" ],
+					[ "Float", "Enter the new Y position of the sound" ],
+					[ "Float", "Enter the new Z position of the sound" ]
+				]
+			},
+			{
+				"Title": "Set minimum distance of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new minimum distance of the sound" ]
+				]
+			},
+			{
+				"Title": "Set maximum distance of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new maximum distance of the sound" ]
+				]
+			},
+			{
+				"Title": "Set sound velocity of sound ID %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new X velocity of the sound" ],
+					[ "Float", "Enter the new Y velocity of the sound" ],
+					[ "Float", "Enter the new Z velocity of the sound" ]
+				]
+			},
+			{
+				"Title": "Pause sound ID %0",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to pause" ]
+				]
+			},
+			{
+				"Title": "Unpause sound ID %0",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to unpause" ]
+				]
+			},
+			{
+				"Title": "Set playback position of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enter the new playback position in milliseconds" ]
+				]
+			},
+			{
+				"Title": "Set playback speed of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new playback speed (default: 1.0)" ]
+				]
+			},
+			{
+				"Title": "Set pan of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new sound pan (takes a value between -1 and 1, 0 being center, floats accepted)" ]
+				]
+			},
+			{
+				"Title": "Set sound volume of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter the new sound volume (from 0 to 1, floats accepted)" ]
+				]
+			},
+			{
+				"Title": "Set chorus sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set chorus sound effect parameters of %0 to (%1, %2, %3, %4, sinus wave form enabled %5, %6, %7)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter depth (default: 10.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: 25.0, min value -99, max 99.0)" ],
+					[ "Float", "Enter frequency (default: 1.1, min value 0, max 10.0)" ],
+					[ "Integer", "Enable sinus wave form? (enter 1 if yes, 0 if disabled, default is 1)" ],
+					[ "Float", "Enter delay (default: 16.0, min value 0, max 20.0)" ],
+					[ "Integer", "Enter phase (default: 90, possible values -180, -90, 0, 90, 180)" ]
+				]
+			},
+			{
+				"Title": "Set compressor sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set compressor sound effect parameters of %0 to (%1, %2, %3, %4, %5, %6)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter gain (default: 0, min value -60, max 60.0)" ],
+					[ "Float", "Enter attack (default: 10.0, min value 0.01, max 500.0)" ],
+					[ "Float", "Enter release (default: 200.0, min value 50, max 3000.0)" ],
+					[ "Float", "Enter threshold (default: -20.0, min value -60, max 0.0)" ],
+					[ "Float", "Enter ratio (default: 3.0, min value 1, max 100.0)" ],
+					[ "Float", "Enter predelay (default: 4.0, min value 0, max 4.0)" ]
+				]
+			},
+			{
+				"Title": "Set echo sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set echo sound effect parameters of %0 to (%1, %2, %3, %4, %5)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter left delay (default: 500.0, min value 1, max 2000.0)" ],
+					[ "Float", "Enter right delay (default: 500.0, min value 1, max 2000.0)" ],
+					[ "Integer", "Enter pan delay (default: 0, min value 0, max 1)" ]
+				]
+			},
+			{
+				"Title": "Set distortion sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set distortion sound effect parameters of %0 to (%1, %2, %3, %4, %5)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter gain (default: -18.0, min value -60, max 0)" ],
+					[ "Float", "Enter edge (default: 15.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter post EQ center frequency (default: 2400.0, min value 100, max 8000)" ],
+					[ "Float", "Enter post EQ bandwidth (default: 2400.0, min value 100, max 8000)" ],
+					[ "Float", "Enter pre lowpass cutoff (default: 8000.0, min value 100, max 8000)" ]
+				]
+			},
+			{
+				"Title": "Set flanger sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set flanger sound effect parameters of %0 to (%1, %2, %3, %4, triangle wave form enabled %5, %6, %7)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter depth (default: 100.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: -50.0, min value -99, max 99.0)" ],
+					[ "Float", "Enter frequency (default: 0.25, min value 0, max 10.0)" ],
+					[ "Integer", "Enable triangle wave form? (enter 1 if yes, 0 if disabled, default is 1)" ],
+					[ "Float", "Enter delay (default: 2.0, min value 0, max 20.0)" ],
+					[ "Integer", "Enter phase (default: 0, possible values -180, -90, 0, 90, 180)" ]
+				]
+			},
+			{
+				"Title": "Set gargle sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set gargle sound effect parameters of %0 to (%1, sinus wave form enabled %2)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enter rate (in hertz, default: 20, min value 1, max 1000)" ],
+					[ "Integer", "Enable sinus wave form? (enter 1 if yes, 0 if disabled, default is 1)" ]
+				]
+			},
+			{
+				"Title": "Set I3DL2 reverb sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set I3DL2 reverb sound effect parameters of %0 to (%1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enter room (default: -1000, interval -10000, 0)" ],
+					[ "Integer", "Enter room high frequency (default: -100, interval -10000, 0)" ],
+					[ "Float", "Enter room rolloff factor (default: 0.0, interval 0.0, 10.0)" ],
+					[ "Float", "Enter decay time (default: 1.49, interval 0.1, 20.0)" ],
+					[ "Float", "Enter decay high frequency ratio (default: 0.83, interval 0.1, 2.0)" ],
+					[ "Integer", "Enter reflections (default: -2602, interval -10000, 1000)" ],
+					[ "Float", "Enter reflections delay (default: 0.007, interval 0.0, 0.3)" ],
+					[ "Integer", "Enter reverb (default: 200, interval -10000, 2000)" ],
+					[ "Float", "Enter reverb delay (default: 0.011, interval 0.0, 0.1)" ],
+					[ "Float", "Enter diffusion (default: 100.0, interval 0.0, 100.0)" ],
+					[ "Float", "Enter density (default: 100.0, interval 0.0, 100.0)" ],
+					[ "Float", "Enter high frequency reference (in hertz, default: 5000.0, interval 20.0, 20000.0)" ]
+				]
+			},
+			{
+				"Title": "Set parametic equalizer sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set parametic equalizer sound effect parameters of %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter center frequency (in hertz, default: 8000.0, min value 80, max 16000)" ],
+					[ "Float", "Enter bandwidth (in semitones, default: 12.0, min value 1.0, max 36.0)" ],
+					[ "Float", "Enter gain (default: 0.0, min value -15.0, max 15.0)" ]
+				]
+			},
+			{
+				"Title": "Set waves reverb sound effect of %0 to %1",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set waves reverb sound effect parameters of %0 to (%1, %2, %3, %4)",
+				"Parameters": [
+					[ "Filename", "Enter the path of the audio file to modify" ],
+					[ "Float", "Enter input gain (in decibels, default: 0.0, min value -96.0, max 0.0)" ],
+					[ "Float", "Enter reverb mix (in decibels, default: 0.0, min value -96.0, max 0.0)" ],
+					[ "Float", "Enter reverb time (in milliseconds, default: 1000.0, min value 0.001, max 3000.0)" ],
+					[ "Float", "Enter high frequency reverb time ratio (default: 0.001, min value 0.001, max 0.999)" ]
+				]
+			},
+			// ID
+			{
+				"Title": "Set chorus sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set chorus sound effect parameters of sound ID %0 to (%1, %2, %3, %4, sinus wave form enabled %5, %6, %7)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter depth (default: 10.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: 25.0, min value -99, max 99.0)" ],
+					[ "Float", "Enter frequency (default: 1.100000024, min value 0, max 10.0)" ],
+					[ "Integer", "Enable sinus wave form? (enter 1 if yes, 0 if disabled, default is 1)" ],
+					[ "Float", "Enter delay (default: 16.0, min value 0, max 20.0)" ],
+					[ "Integer", "Enter phase (default: 90, possible values -180, -90, 0, 90, 180)" ]
+				]
+			},
+			{
+				"Title": "Set compressor sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set compressor sound effect parameters of sound ID %0 to (%1, %2, %3, %4, %5, %6)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter gain (default: 0, min value -60, max 60.0)" ],
+					[ "Float", "Enter attack (default: 10.0, min value 0.01, max 500.0)" ],
+					[ "Float", "Enter release (default: 200.0, min value 50, max 3000.0)" ],
+					[ "Float", "Enter threshold (default: -20.0, min value -60, max 0.0)" ],
+					[ "Float", "Enter ratio (default: 3.0, min value 1, max 100.0)" ],
+					[ "Float", "Enter predelay (default: 4.0, min value 0, max 4.0)" ]
+				]
+			},
+			{
+				"Title": "Set echo sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if disabled)" ]
+				]
+			},
+			{
+				"Title": "Set echo sound effect parameters of sound ID %0 to (%1, %2, %3, %4, %5)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter left delay (default: 500.0, min value 1, max 2000.0)" ],
+					[ "Float", "Enter right delay (default: 500.0, min value 1, max 2000.0)" ],
+					[ "Integer", "Enter pan delay (default: 0, min value 0, max 1)" ]
+				]
+			},
+			{
+				"Title": "Set distortion sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set distortion sound effect parameters of sound ID %0 to (%1, %2, %3, %4, %5)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter gain (default: -18.0, min value -60, max 0)" ],
+					[ "Float", "Enter edge (default: 15.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter post EQ center frequency (default: 2400.0, min value 100, max 8000)" ],
+					[ "Float", "Enter post EQ bandwidth (default: 2400.0, min value 100, max 8000)" ],
+					[ "Float", "Enter pre lowpass cutoff (default: 8000.0, min value 100, max 8000)" ]
+				]
+			},
+			{
+				"Title": "Set flanger sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set flanger sound effect parameters of sound ID %0 to (%1, %2, %3, %4, triangle wave form enabled %5, %6, %7)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter wet dry mix (default: 50.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter depth (default: 100.0, min value 0, max 100.0)" ],
+					[ "Float", "Enter feedback (default: -50.0, min value -99, max 99.0)" ],
+					[ "Float", "Enter frequency (default: 0.25, min value 0, max 10.0)" ],
+					[ "Integer", "Enable triangle wave form? (enter 1 if yes, 0 if no, default is 1)" ],
+					[ "Float", "Enter delay (default: 2.0, min value 0, max 20.0)" ],
+					[ "Integer", "Enter phase (default: 0, possible values -180, -90, 0, 90, 180)" ]
+				]
+			},
+			{
+				"Title": "Set gargle sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set gargle sound effect parameters of sound ID %0 to (%1, sinus wave form enabled %2)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enter rate (in hertz, default: 20, min value 1, max 1000)" ],
+					[ "Integer", "Enable sinus wave form? (enter 1 if yes, 0 if no, default is 1)" ]
+				]
+			},
+			{
+				"Title": "Set I3DL2 reverb sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set I3DL2 reverb sound effect parameters of sound ID %0 to (%1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enter room (default: -1000, interval -10000, 0)" ],
+					[ "Integer", "Enter room high frequency (default: -100, interval -10000, 0)" ],
+					[ "Float", "Enter room rolloff factor (default: 0.0, interval 0.0, 10.0)" ],
+					[ "Float", "Enter decay time (default: 1.49, interval 0.1, 20.0)" ],
+					[ "Float", "Enter decay high frequency ratio (default: 0.83, interval 0.1, 2.0)" ],
+					[ "Integer", "Enter reflections (default: -2602, interval -10000, 1000)" ],
+					[ "Float", "Enter reflections delay (default: 0.007, interval 0.0, 0.3)" ],
+					[ "Integer", "Enter reverb (default: 200, interval -10000, 2000)" ],
+					[ "Float", "Enter reverb delay (default: 0.011, interval 0.0, 0.1)" ],
+					[ "Float", "Enter diffusion (default: 100.0, interval 0.0, 100.0)" ],
+					[ "Float", "Enter density (default: 100.0, interval 0.0, 100.0)" ],
+					[ "Float", "Enter high frequency reference (in hertz, default: 5000.0, interval 20.0, 20000.0)" ]
+				]
+			},
+			{
+				"Title": "Set parametic equalizer sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set parametic equalizer sound effect parameters of sound ID %0 to (%1, %2, %3)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter center frequency (in hertz, default: 8000.0, min value 80, max 16000)" ],
+					[ "Float", "Enter bandwidth (in semitones, default: 12.0, min value 1.0, max 36.0)" ],
+					[ "Float", "Enter gain (default: 0.0, min value -15.0, max 15.0)" ]
+				]
+			},
+			{
+				"Title": "Set waves reverb sound effect of sound ID %0 to %1",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Integer", "Enable the sound effect? (enter 1 if yes, 0 if no)" ]
+				]
+			},
+			{
+				"Title": "Set waves reverb sound effect parameters of sound ID %0 to (%1, %2, %3, %4)",
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to modify" ],
+					[ "Float", "Enter input gain (in decibels, default: 0.0, min value -96.0, max 0.0)" ],
+					[ "Float", "Enter reverb mix (in decibels, default: 0.0, min value -96.0, max 0.0)" ],
+					[ "Float", "Enter reverb time (in milliseconds, default: 1000.0, min value 0.001, max 3000.0)" ],
+					[ "Float", "Enter high frequency reverb time ratio (default: 0.001, min value 0.001, max 0.999)" ]
+				]
+			},
+			{
+				"Title": "Create microphone recorder using microphone ID %0",
+				"Parameters": [
+					[ "String", "Enter the device ID of the microphone to use (set this to \"0\" to just use the system default microphone" ]
+				]
+			},
+			{
+				"Title": "Create irrKlang device using device driver %0, sound device ID %1",
+				"Parameters": [
+					[ "String", "Enter the device driver used for sound output (options are \"Automatic\", \"DirectSound\", \"DirectSound8\", \"WinMM\", anything else uses what's in object properties)" ],
+					[ "String", "Enter the device ID of the sound device to use (set this to \"0\" to just use the system default sound device)" ]
+				]
+			},
+			{
+				"Title": "Start recording microphone at %0hz",
+				"Parameters": [
+					[ "Integer", "Enter the sample rate of the audio to record (recommended: 48000)" ]
+				]
+			},
+			{
+				"Title": "Stop recording microphone, saving with name %0",
+				"Parameters": [
+					[ "String", "Enter a name for the recorded audio (you can then play a sound using this name to play the recorded audio via the Use expression button)" ]
+				]
+			},
+			{
+				"Title": "Save last microphone recording to file path %0",
+				"Parameters": [
+					[ "Filename", "Enter the file path to save the recording to" ]
+				]
+			},
+			{
+				"Title": "Load plugins in path %0",
+				"Parameters": [
+					[ "String", "Enter the folder path of the plugins (recommended to use Apppath$)" ]
+				]
+			}
+		],
+		"Conditions": [
+			{
+				"Title": "%o : irrKlang device is created?",
+				"Triggered": false
+			},
+			{
+				"Title": "%o : Is sound %0 playing?",
+				"Triggered": false,
+				"Parameters": [
+					[ "Filename", "Enter the path of the sound to check" ]
+				]
+			},
+			{
+				"Title": "%o : Is sound %0 paused?",
+				"Triggered": false,
+				"Parameters": [
+					[ "Filename", "Enter the path of the sound to check" ]
+				]
+			},
+			{
+				"Title": "%o : Is sound ID %0 playing?",
+				"Triggered": false,
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to check" ]
+				]
+			},
+			{
+				"Title": "%o : Is sound ID %0 paused?",
+				"Triggered": false,
+				"Parameters": [
+					[ "Integer", "Enter the ID of the sound to check" ]
+				]
+			},
+			{
+				"Title": "%o : Microphone recorder is created?",
+				"Triggered": false
+			}
+		],
+		"Expressions": [
+			{
+				"Title": "GetListenerX(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerY(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerZ(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerXR(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerYR(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerZR(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetSoundX(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundY(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundZ(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundMinD(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundMaxD(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundXV(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundYV(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundZV(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetMasterVol(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerXV(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerYV(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetListenerZV(",
+				"Returns": "Float"
+			},
+			{
+				"Title": "GetSoundVol(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetPlaybackPos(",
+				"Returns": "Integer",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundLen(",
+				"Returns": "Integer",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetPlaybackSpd(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundPan(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "String", "Path of audio file" ]
+				]
+			},
+			{
+				"Title": "GetSoundXID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundYID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundZID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundMinDID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundMaxDID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundXVID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundYVID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundZVID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundVolID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetPlaybackPosID(",
+				"Returns": "Integer",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundLenID(",
+				"Returns": "Integer",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetPlaybackSpdID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetSoundPanID(",
+				"Returns": "Float",
+				"Parameters": [
+					[ "Integer", "ID of sound" ]
+				]
+			},
+			{
+				"Title": "GetMicCount(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetMicDesc$(",
+				"Returns": "Text",
+				"Parameters": [
+					[ "Integer", "Index of microphone" ]
+				]
+			},
+			{
+				"Title": "GetMicID$(",
+				"Returns": "Text",
+				"Parameters": [
+					[ "Integer", "Index of microphone" ]
+				]
+			},
+			{
+				"Title": "GetSoundDevCount(",
+				"Returns": "Integer"
+			},
+			{
+				"Title": "GetSoundDevDesc$(",
+				"Returns": "Text",
+				"Parameters": [
+					[ "Integer", "Index of sound device" ]
+				]
+			},
+			{
+				"Title": "GetSoundDevID$(",
+				"Returns": "Text",
+				"Parameters": [
+					[ "Integer", "Index of sound device" ]
+				]
+			},
+			{
+				"Title": "GetDriver$(",
+				"Returns": "Text"
+			}
+		],
+		"Properties": [
+			{
+				"Title": "Device Driver",
+				"Info": "Specifies the output driver to be used for sound output. Use 'Automatic' to let irrKlang decide the best sound driver for this system.",
+				"Type": "Combo Box",
+				"DefaultState": "Automatic",
+				"Items": [ "Automatic", "DirectSound", "DirectSound8", "WinMM" ]
+			},
+			{
+				"Title": "Device creation settings",
+				"Info": "Settings regarding whether a device should be created upon startup or not.",
+				"Type": "Group"
+			},
+			{
+				"Title": "Automatically create irrKlang device",
+				"Info": "Automatically starts irrKlang with the default sound device so you don't have to do it in events manually.",
+				"Type": "Checkbox",
+				"DefaultState": true
+			},
+			{
+				"Title": "Automatically create microphone recorder",
+				"Info": "Automatically creates the microphone recorder with the default microphone so you don't have to do it in events manually.\nThe irrKlang device must also be started automatically, otherwise this checkbox has no effect.",
+				"Type": "Checkbox",
+				"DefaultState": false
+			},
+			{
+				"Title": "Other settings",
+				"Info": "Miscellaneous settings.",
+				"Type": "Group"
+			},
+			{
+				"Title": "Use 3D buffers",
+				"Info": "If this is enabled, the object will use 3D sound buffers instead of emulating them through software.",
+				"Type": "Checkbox",
+				"DefaultState": false
+			}
+		]
+		}
+}
