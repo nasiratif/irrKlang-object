@@ -7,8 +7,8 @@
 		"About": {
 			"Name": "irrKlang object",
 			"Author": "@nasirfoxx (Nasir 'Nassic' W.)",
-			"Copyright": "Fusion Extension by \u00A9 Nasir 'Nassic' W. 2023-2024, irrKlang library by \u00A9 Nikolaus Gebhardt / Ambiera 2001-2020.",
-			"Comment": "Allows you to use the irrKlang audio library in your Fusion application.\n Not to be used in commercial applications.\n (Extension version 1.0, irrKlang version 1.6.0)",
+			"Copyright": "Fusion Extension by \u00A9 Nasir 'Nassic' W. 2023-2026, irrKlang library by \u00A9 Nikolaus Gebhardt / Ambiera 2001-2020.",
+			"Comment": "Allows you to use the irrKlang audio library in your Fusion application.\n Not to be used in commercial applications.\n (Extension version 1.0.1, irrKlang version 1.6.0)",
 			"Help": "Help/irrKlang/irrKlang_object.html",
 			"URL": "https://community.clickteam.com/user/36199-nasirfoxx/"
 		},

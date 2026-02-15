@@ -139,6 +139,7 @@
     <ClCompile Include="..\Lib\Shared\Edif.Runtime.cpp" />
     <ClCompile Include="..\Lib\Shared\json.cpp" />
     <ClCompile Include="..\Lib\Shared\ObjectSelection.cpp" />
+    <ClCompile Include="..\Lib\Shared\SurfaceMultiPlat.cpp" />
     <ClCompile Include="..\Lib\Windows\Edif.Edittime.cpp" />
     <ClCompile Include="Actions.cpp" />
     <ClCompile Include="Conditions.cpp" />
@@ -158,12 +159,12 @@
     <ClInclude Include="..\Inc\Shared\Strings.hpp" />
     <ClInclude Include="..\Inc\Windows\Props.h" />
     <ClInclude Include="..\Inc\Windows\WindowsDefines.hpp" />
-    <ClInclude Include="Common.h" />
+    <ClInclude Include="Common.hpp" />
     <ClInclude Include="DarkExt.json">
       <FileType>Document</FileType>
     </ClInclude>
     <ClInclude Include="Expbool.h" />
-    <ClInclude Include="Extension.h" />
+    <ClInclude Include="Extension.hpp" />
     <ClInclude Include="ikSystem.h" />
     <ClInclude Include="Resource.h" />
     <None Include="Icon.png" />

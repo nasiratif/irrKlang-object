@@ -1,11 +1,11 @@
 #pragma once
 
-// Do not move XXXEXT after #include of DarkEdif.h!
+// Do not move XXXEXT after #include of DarkEdif.hpp!
 // #define TGFEXT	// TGF2, Fusion 2.x Std, Fusion 2.x Dev
 #define MMFEXT		// Fusion 2.x, Fusion 2.x Dev
 // #define PROEXT	// Fusion 2.x Dev only
 
-#include "DarkEdif.h"
+#include "DarkEdif.hpp"
 #include <iostream>
 
 // edPtr : Used at edittime and saved in the MFA/CCN/EXE files

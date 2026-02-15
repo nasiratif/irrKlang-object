@@ -1,19 +1,21 @@
 #pragma once
 
-#include <Common.h>
+#include <Common.hpp>
 #include <iostream>
 #include <vector>
 #include <functional>
 
 // Custom irrKlang sound management vector so we can modify sounds by pathname or ID within Fusion
-struct SoundData {
+struct SoundData
+{
     irrklang::ISound* pSound = nullptr;
     std::wstring fileName;
     int ID = 0;
     bool sfxEnabled;
 };
 
-struct IkData {
+struct IkData
+{
     using SoundDataVec = std::vector<SoundData>;
     SoundDataVec pSoundDatas;
 };

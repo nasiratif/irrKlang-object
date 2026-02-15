@@ -43,6 +43,9 @@
     <ClCompile Include="ikSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Lib\Shared\SurfaceMultiPlat.cpp">
+      <Filter>Global to all extensions\Edif</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Inc\Windows\MMFMasterHeader.h">
@@ -57,10 +60,10 @@
     <ClInclude Include="..\Inc\Windows\WindowsDefines.hpp">
       <Filter>Global to all extensions\Edif</Filter>
     </ClInclude>
-    <ClInclude Include="Common.h">
+    <ClInclude Include="Common.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Extension.h">
+    <ClInclude Include="Extension.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">

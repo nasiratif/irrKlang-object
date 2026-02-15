@@ -1,4 +1,4 @@
-#include "Common.h"
+#include "Common.hpp"
 #include <ikSystem.h>
 #include <Expbool.h>
 
@@ -8,14 +8,15 @@ void Extension::PlaySound(const TCHAR* pathToSound, int id, int SFX)
 
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
     
-    if (audio)
-        soundData.pSound = audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled);
+	soundData.pSound = audio ? audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
 
     soundData.ID = id;
     
-    if (soundData.pSound)
-        soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-        ikData.pSoundDatas.emplace_back(soundData);
+	if (soundData.pSound)
+	{
+		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
+		ikData.pSoundDatas.emplace_back(soundData);
+	}
 }
 
 void Extension::PlayLoopingSound(const TCHAR* pathToSound, int id, int SFX)
@@ -24,14 +25,15 @@ void Extension::PlayLoopingSound(const TCHAR* pathToSound, int id, int SFX)
 
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
 
-    if (audio)
-        soundData.pSound = audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled);
+	soundData.pSound = audio ? audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
 
     soundData.ID = id;
 
     if (soundData.pSound)
-        soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-        ikData.pSoundDatas.emplace_back(soundData);
+	{
+		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
+		ikData.pSoundDatas.emplace_back(soundData);
+	}
 }
 
 void Extension::StopSound(const TCHAR* pathToSound)
@@ -50,14 +52,15 @@ void Extension::Play3DSound(const TCHAR* pathToSound, float xPos, float yPos, fl
 
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
 
-    if (audio)
-        soundData.pSound = audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled);
+    soundData.pSound = audio ? audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
 
     soundData.ID = id;
 
     if (soundData.pSound)
-        soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-        ikData.pSoundDatas.emplace_back(soundData);
+	{
+		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
+		ikData.pSoundDatas.emplace_back(soundData);
+	}
 }
 
 void Extension::PlayLooping3DSound(const TCHAR* pathToSound, float xPos, float yPos, float zPos, int id, int SFX)
@@ -66,14 +69,15 @@ void Extension::PlayLooping3DSound(const TCHAR* pathToSound, float xPos, float y
 
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
     
-    if (audio)
-        soundData.pSound = audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled);
+    soundData.pSound = audio ? audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
 
     soundData.ID = id;
 
     if (soundData.pSound)
-        soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-        ikData.pSoundDatas.emplace_back(soundData);
+	{
+		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
+		ikData.pSoundDatas.emplace_back(soundData);
+	}
 }
 
 void Extension::SetListenerPos(float xPos, float yPos, float zPos, float xRot, float yRot, float zRot, float xVel, float yVel, float zVel)

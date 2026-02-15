@@ -1,15 +1,15 @@
 /* irrKlang object
 @nasirfoxx on Clickteam Community Forums */
 
-#include "Common.h"
+#include "Common.hpp"
 #include "ikSystem.h"
 
 ///
 /// EXTENSION CONSTRUCTOR/DESTRUCTOR
 ///
 
-Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobPtr) :
-	rdPtr(_rdPtr), rhPtr(_rdPtr->rHo.AdRunHeader), Runtime(&_rdPtr->rHo), FusionDebugger(this)
+Extension::Extension(RunObject* const _rdPtr, const EDITDATA* const edPtr, const CreateObjectInfo* const cobPtr) :
+	rdPtr(_rdPtr), rhPtr(_rdPtr->get_rHo()->get_AdRunHeader()), Runtime(this), FusionDebugger(this)
 {
 	/*
 		Link all your action/condition/expression functions to their IDs to match the
@@ -175,8 +175,6 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 
 	LinkExpression(42, GetDriver);
 
-	// Initialize Mr. Klang™:
-
 	driver = DarkEdif::TStringToUTF8(edPtr->Props.GetPropertyStr("Device Driver"));
 
 	autoIrrKlang = edPtr->Props.IsPropChecked("Automatically create irrKlang device");
@@ -205,7 +203,6 @@ Extension::Extension(RUNDATA * _rdPtr, EDITDATA * edPtr, CreateObjectInfo * cobP
 				audio = irrklang::createIrrKlangDevice(driverChoice, irrklang::ESEO_USE_3D_BUFFERS);
 			else
 				audio = irrklang::createIrrKlangDevice(driverChoice, irrklang::ESEO_DEFAULT_OPTIONS);
-
 		}
 
 		if (audio)
