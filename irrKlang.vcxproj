@@ -30,7 +30,7 @@
     <ProjectGuid>{0FC68544-B3E5-4632-9BBA-7A84EADFC38E}</ProjectGuid>
     <ProjectName>irrKlang</ProjectName>
     <TargetName>irrKlang</TargetName>
-    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
