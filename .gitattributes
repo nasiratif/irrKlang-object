@@ -1,0 +1,87 @@
+*.doc  diff=astextplain
+*.DOC	diff=astextplain
+*.docx	diff=astextplain
+*.DOCX	diff=astextplain
+*.dot	diff=astextplain
+*.DOT	diff=astextplain
+*.pdf	diff=astextplain
+*.PDF	diff=astextplain
+*.rtf	diff=astextplain
+*.RTF	diff=astextplain
+
+*.jpg  	binary
+*.png 	binary
+*.gif 	binary
+
+*.cs text=auto diff=csharp
+*.vb text=auto
+
+*.py text=auto
+*.rb text=auto
+*.css text=auto
+*.scss text=auto
+*.sass text=auto
+*.less text=auto
+*.lisp text=auto
+*.clj text=auto
+*.sql text=auto
+*.php text=auto
+*.lua text=auto
+*.m text=auto
+*.asm text=auto
+*.erl text=auto
+*.fs text=auto
+*.fsx text=auto
+*.hs text=auto
+
+*.csproj text=auto merge=union
+*.vbproj text=auto merge=union
+*.fsproj text=auto merge=union
+*.dbproj text=auto merge=union
+
+# what VS will generate by default
+*.vcxproj text eol=crlf merge=union
+*.vcxproj.filters text eol=crlf merge=union
+*.vcxitems text eol=crlf merge=union
+*.vcxitems.filters text eol=crlf merge=union
+*.sln text eol=crlf merge=union
+*.config text eol=crlf
+*.xml text eol=crlf
+
+# ImHex file
+*.hexpat text eol=lf
+
+# From the editorconfig
+*.c text eol=lf
+*.cc text eol=lf
+*.cpp text eol=lf
+*.cxx text eol=lf
+*.h text eol=lf
+*.hh text eol=lf
+*.hpp text eol=lf
+*.hxx text eol=lf
+*.txt text eol=lf
+*.ini text eol=lf
+*.props text eol=lf
+*.md text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.rc text eol=crlf
+*.htm text eol=crlf
+*.html text eol=crlf
+*.mm text eol=lf
+*.plist text eol=lf
+*.java text eol=lf
+CodeResources text eol=lf
+
+# HelpNDoc and generated compressed help files
+*.hnd binary
+*.chm binary
+
+# Edits this commit sha text document when GitHub's export zip is used.
+# Does not apply to GitHub actions and regular git clone/forks, for which PreBuildTool
+# will fill the gap by looking for a .git directory.
+# This SHA is used in update check for latest SDK beta test. See FusionSDK.props.
+# If this file is edited automagically and you want it to not show up without modifying gitignore,
+# create/append "DarkEdif/Lib/GitArchiveCommit.md" to the text file ".git/info/exclude".
+"DarkEdif/Lib/GitArchiveCommit.md" export-subst
