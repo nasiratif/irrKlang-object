@@ -1,44 +1,38 @@
 #include "Common.hpp"
-#include <ikSystem.h>
-#include <Expbool.h>
+#include <irrExtension.hpp>
+#include <FusionBool.hpp>
 
 void Extension::PlaySound(const TCHAR* pathToSound, int id, int SFX)
-{  
+{
+	irrExtension::SoundData soundData;
     soundData.sfxEnabled = TrueFalse(SFX);
-
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
-    
 	soundData.pSound = audio ? audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
-
     soundData.ID = id;
-    
 	if (soundData.pSound)
 	{
-		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-		ikData.pSoundDatas.emplace_back(soundData);
+		soundData.pSound->setSoundStopEventReceiver(soundStopEventReceiver.get());
+		currentSounds.emplace_back(soundData);
 	}
 }
 
 void Extension::PlayLoopingSound(const TCHAR* pathToSound, int id, int SFX)
 {
+	irrExtension::SoundData soundData;
     soundData.sfxEnabled = TrueFalse(SFX);
-
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
-
 	soundData.pSound = audio ? audio->play2D(DarkEdif::TStringToUTF8(pathToSound).c_str(), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
-
     soundData.ID = id;
-
     if (soundData.pSound)
 	{
-		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-		ikData.pSoundDatas.emplace_back(soundData);
+		soundData.pSound->setSoundStopEventReceiver(soundStopEventReceiver.get());
+		currentSounds.emplace_back(soundData);
 	}
 }
 
 void Extension::StopSound(const TCHAR* pathToSound)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -47,36 +41,30 @@ void Extension::StopSound(const TCHAR* pathToSound)
 }
 
 void Extension::Play3DSound(const TCHAR* pathToSound, float xPos, float yPos, float zPos, int id, int SFX)
-{ 
+{
+	irrExtension::SoundData soundData;
     soundData.sfxEnabled = TrueFalse(SFX);
-
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
-
     soundData.pSound = audio ? audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), false, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
-
     soundData.ID = id;
-
     if (soundData.pSound)
 	{
-		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-		ikData.pSoundDatas.emplace_back(soundData);
+		soundData.pSound->setSoundStopEventReceiver(soundStopEventReceiver.get());
+		currentSounds.emplace_back(soundData);
 	}
 }
 
 void Extension::PlayLooping3DSound(const TCHAR* pathToSound, float xPos, float yPos, float zPos, int id, int SFX)
 {
+	irrExtension::SoundData soundData;
     soundData.sfxEnabled = TrueFalse(SFX);
-
     soundData.fileName = DarkEdif::TStringToWide(pathToSound);
-    
     soundData.pSound = audio ? audio->play3D(DarkEdif::TStringToUTF8(pathToSound).c_str(), irrklang::vec3df(xPos, yPos, zPos), true, false, true, irrklang::ESM_AUTO_DETECT, soundData.sfxEnabled) : nullptr;
-
     soundData.ID = id;
-
     if (soundData.pSound)
 	{
-		soundData.pSound->setSoundStopEventReceiver(&soundStopEventReceiver);
-		ikData.pSoundDatas.emplace_back(soundData);
+		soundData.pSound->setSoundStopEventReceiver(soundStopEventReceiver.get());
+		currentSounds.emplace_back(soundData);
 	}
 }
 
@@ -92,7 +80,7 @@ void Extension::SetListenerPos(float xPos, float yPos, float zPos, float xRot, f
 
 void Extension::SetSoundPos(const TCHAR* pathToSound, float xPos, float yPos, float zPos)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -102,7 +90,7 @@ void Extension::SetSoundPos(const TCHAR* pathToSound, float xPos, float yPos, fl
 
 void Extension::SetMinDis(const TCHAR* pathToSound, float dis)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -112,7 +100,7 @@ void Extension::SetMinDis(const TCHAR* pathToSound, float dis)
 
 void Extension::SetMaxDis(const TCHAR* pathToSound, float dis)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -134,7 +122,7 @@ void Extension::SetDopplerParams(float dopplerFactor, float distanceFactor)
 
 void Extension::SetSoundVel(const TCHAR* pathToSound, float xVel, float yVel, float zVel)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -150,7 +138,7 @@ void Extension::SetMasterVol(float vol)
 
 void Extension::SetSoundVol(const TCHAR* pathToSound, float vol)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -160,7 +148,7 @@ void Extension::SetSoundVol(const TCHAR* pathToSound, float vol)
 
 void Extension::PauseSound(const TCHAR* pathToSound)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -170,7 +158,7 @@ void Extension::PauseSound(const TCHAR* pathToSound)
 
 void Extension::UnpauseSound(const TCHAR* pathToSound)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -196,7 +184,7 @@ void Extension::UnpauseAll()
 
 void Extension::SetPlaybackPos(const TCHAR* pathToSound, int pos)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -206,7 +194,7 @@ void Extension::SetPlaybackPos(const TCHAR* pathToSound, int pos)
 
 void Extension::SetPlaybackSpeed(const TCHAR* pathToSound, float spd)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -216,7 +204,7 @@ void Extension::SetPlaybackSpeed(const TCHAR* pathToSound, float spd)
 
 void Extension::SetSoundPan(const TCHAR* pathToSound, float pan)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -226,7 +214,7 @@ void Extension::SetSoundPan(const TCHAR* pathToSound, float pan)
 
 void Extension::StopSoundID(int id)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -236,7 +224,7 @@ void Extension::StopSoundID(int id)
 
 void Extension::SetSoundPosID(int id, float xPos, float yPos, float zPos)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -246,7 +234,7 @@ void Extension::SetSoundPosID(int id, float xPos, float yPos, float zPos)
 
 void Extension::SetMinDisID(int id, float dis)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -256,7 +244,7 @@ void Extension::SetMinDisID(int id, float dis)
 
 void Extension::SetMaxDisID(int id, float dis)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -266,7 +254,7 @@ void Extension::SetMaxDisID(int id, float dis)
 
 void Extension::SetSoundVelID(int id, float xVel, float yVel, float zVel)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -276,7 +264,7 @@ void Extension::SetSoundVelID(int id, float xVel, float yVel, float zVel)
 
 void Extension::PauseSoundID(int id)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -286,7 +274,7 @@ void Extension::PauseSoundID(int id)
 
 void Extension::UnpauseSoundID(int id)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -296,7 +284,7 @@ void Extension::UnpauseSoundID(int id)
 
 void Extension::SetPlaybackPosID(int id, int pos)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -306,7 +294,7 @@ void Extension::SetPlaybackPosID(int id, int pos)
 
 void Extension::SetPlaybackSpeedID(int id, float spd)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -316,7 +304,7 @@ void Extension::SetPlaybackSpeedID(int id, float spd)
 
 void Extension::SetSoundPanID(int id, float pan)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -326,7 +314,7 @@ void Extension::SetSoundPanID(int id, float pan)
 
 void Extension::SetSoundVolID(int id, float vol)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -336,7 +324,7 @@ void Extension::SetSoundVolID(int id, float vol)
 
 void Extension::SetChorus(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -360,7 +348,7 @@ void Extension::SetChorus(const TCHAR* pathToSound, int enable)
 
 void Extension::SetChorusParams(const TCHAR* pathToSound, float fWetDryMix, float fDepth, float fFeedback, float fFrequency, int sinusWaveForm, float fDelay, int IPhase)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -377,7 +365,7 @@ void Extension::SetChorusParams(const TCHAR* pathToSound, float fWetDryMix, floa
 
 void Extension::SetCompressor(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -401,7 +389,7 @@ void Extension::SetCompressor(const TCHAR* pathToSound, int enable)
 
 void Extension::SetCompressorParams(const TCHAR* pathToSound, float fGain, float fAttack, float fRelease, float fThreshold, float fRatio, float fPredelay)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -418,7 +406,7 @@ void Extension::SetCompressorParams(const TCHAR* pathToSound, float fGain, float
 
 void Extension::SetEcho(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -442,7 +430,7 @@ void Extension::SetEcho(const TCHAR* pathToSound, int enable)
 
 void Extension::SetEchoParams(const TCHAR* pathToSound, float fWetDryMix, float fFeedback, float fLeftDelay, float fRightDelay, int IPanDelay)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -459,7 +447,7 @@ void Extension::SetEchoParams(const TCHAR* pathToSound, float fWetDryMix, float 
 
 void Extension::SetDistortion(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -483,7 +471,7 @@ void Extension::SetDistortion(const TCHAR* pathToSound, int enable)
 
 void Extension::SetDistortionParams(const TCHAR* pathToSound, float fGain, float fEdge, float fPostEQCenterFrequency, float fPostEQBandwidth, float fPreLowpassCutoff)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -500,7 +488,7 @@ void Extension::SetDistortionParams(const TCHAR* pathToSound, float fGain, float
 
 void Extension::SetFlanger(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -524,7 +512,7 @@ void Extension::SetFlanger(const TCHAR* pathToSound, int enable)
 
 void Extension::SetFlangerParams(const TCHAR* pathToSound, float fWetDryMix, float fDepth, float fFeedback, float fFrequency, int triangleWaveForm, float fDelay, int IPhase)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -541,7 +529,7 @@ void Extension::SetFlangerParams(const TCHAR* pathToSound, float fWetDryMix, flo
 
 void Extension::SetGargle(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -565,7 +553,7 @@ void Extension::SetGargle(const TCHAR* pathToSound, int enable)
 
 void Extension::SetGargleParams(const TCHAR* pathToSound, int rateHz, int sinusWaveForm)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -582,7 +570,7 @@ void Extension::SetGargleParams(const TCHAR* pathToSound, int rateHz, int sinusW
 
 void Extension::SetI3DL2(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -606,7 +594,7 @@ void Extension::SetI3DL2(const TCHAR* pathToSound, int enable)
 
 void Extension::SetI3DL2Params(const TCHAR* pathToSound, int IRoom, int IRoomHF, float fIRoomRolloffFactor, float fIDecayTime, float fIDecayHFRatio, int IReflections, float fIReflectionsDelay, int IReverb, float fIReverbDelay, float fIDiffusion, float fIDensity, float fIHFReference)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -623,7 +611,7 @@ void Extension::SetI3DL2Params(const TCHAR* pathToSound, int IRoom, int IRoomHF,
 
 void Extension::SetParamEq(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -647,7 +635,7 @@ void Extension::SetParamEq(const TCHAR* pathToSound, int enable)
 
 void Extension::SetParamEqParams(const TCHAR* pathToSound, float fCenter, float fBandwidth, float fGain)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -664,7 +652,7 @@ void Extension::SetParamEqParams(const TCHAR* pathToSound, float fCenter, float 
 
 void Extension::SetWaves(const TCHAR* pathToSound, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -688,7 +676,7 @@ void Extension::SetWaves(const TCHAR* pathToSound, int enable)
 
 void Extension::SetWavesParams(const TCHAR* pathToSound, float fInGain, float fReverbMix, float fReverbTime, float fHighFreqRTRatio)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.fileName != DarkEdif::TStringToWide(pathToSound))
             continue;
@@ -707,7 +695,7 @@ void Extension::SetWavesParams(const TCHAR* pathToSound, float fInGain, float fR
 
 void Extension::SetChorusID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -731,7 +719,7 @@ void Extension::SetChorusID(int id, int enable)
 
 void Extension::SetChorusParamsID(int id, float fWetDryMix, float fDepth, float fFeedback, float fFrequency, int sinusWaveForm, float fDelay, int IPhase)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -748,7 +736,7 @@ void Extension::SetChorusParamsID(int id, float fWetDryMix, float fDepth, float 
 
 void Extension::SetCompressorID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -772,7 +760,7 @@ void Extension::SetCompressorID(int id, int enable)
 
 void Extension::SetCompressorParamsID(int id, float fGain, float fAttack, float fRelease, float fThreshold, float fRatio, float fPredelay)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -789,7 +777,7 @@ void Extension::SetCompressorParamsID(int id, float fGain, float fAttack, float 
 
 void Extension::SetEchoID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -813,7 +801,7 @@ void Extension::SetEchoID(int id, int enable)
 
 void Extension::SetEchoParamsID(int id, float fWetDryMix, float fFeedback, float fLeftDelay, float fRightDelay, int IPanDelay)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -830,7 +818,7 @@ void Extension::SetEchoParamsID(int id, float fWetDryMix, float fFeedback, float
 
 void Extension::SetDistortionID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -854,7 +842,7 @@ void Extension::SetDistortionID(int id, int enable)
 
 void Extension::SetDistortionParamsID(int id, float fGain, float fEdge, float fPostEQCenterFrequency, float fPostEQBandwidth, float fPreLowpassCutoff)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -871,7 +859,7 @@ void Extension::SetDistortionParamsID(int id, float fGain, float fEdge, float fP
 
 void Extension::SetFlangerID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -895,7 +883,7 @@ void Extension::SetFlangerID(int id, int enable)
 
 void Extension::SetFlangerParamsID(int id, float fWetDryMix, float fDepth, float fFeedback, float fFrequency, int triangleWaveForm, float fDelay, int IPhase)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -912,7 +900,7 @@ void Extension::SetFlangerParamsID(int id, float fWetDryMix, float fDepth, float
 
 void Extension::SetGargleID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -936,7 +924,7 @@ void Extension::SetGargleID(int id, int enable)
 
 void Extension::SetGargleParamsID(int id, int rateHz, int sinusWaveForm)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -953,7 +941,7 @@ void Extension::SetGargleParamsID(int id, int rateHz, int sinusWaveForm)
 
 void Extension::SetI3DL2ID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -977,7 +965,7 @@ void Extension::SetI3DL2ID(int id, int enable)
 
 void Extension::SetI3DL2ParamsID(int id, int IRoom, int IRoomHF, float fIRoomRolloffFactor, float fIDecayTime, float fIDecayHFRatio, int IReflections, float fIReflectionsDelay, int IReverb, float fIReverbDelay, float fIDiffusion, float fIDensity, float fIHFReference)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -994,7 +982,7 @@ void Extension::SetI3DL2ParamsID(int id, int IRoom, int IRoomHF, float fIRoomRol
 
 void Extension::SetParamEqID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -1018,7 +1006,7 @@ void Extension::SetParamEqID(int id, int enable)
 
 void Extension::SetParamEqParamsID(int id, float fCenter, float fBandwidth, float fGain)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -1035,7 +1023,7 @@ void Extension::SetParamEqParamsID(int id, float fCenter, float fBandwidth, floa
 
 void Extension::SetWavesID(int id, int enable)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -1059,7 +1047,7 @@ void Extension::SetWavesID(int id, int enable)
 
 void Extension::SetWavesParamsID(int id, float fInGain, float fReverbMix, float fReverbTime, float fHighFreqRTRatio)
 {
-    for (auto p : ikData.pSoundDatas)
+    for (auto p : currentSounds)
     {
         if (p.ID != id)
             continue;
@@ -1085,16 +1073,18 @@ void Extension::CreateIrrKDevice(const TCHAR* driver, const TCHAR* dID)
     if (!audio)
     {
         irrklang::E_SOUND_OUTPUT_DRIVER outputDriver;
-        std::wstring driverW = driver;
-        std::transform(driverW.begin(), driverW.end(), driverW.begin(), towupper);
 
-        if (driverW == L"AUTOMATIC")
+		// Convert to uppercase for case-insensitive comparison:
+        std::wstring driverUpper = driver;
+        std::transform(driverUpper.begin(), driverUpper.end(), driverUpper.begin(), towupper);
+
+        if (driverUpper == L"AUTOMATIC")
             outputDriver = irrklang::ESOD_AUTO_DETECT;
-        else if (driverW == L"DIRECTSOUND")
+        else if (driverUpper == L"DIRECTSOUND")
             outputDriver = irrklang::ESOD_DIRECT_SOUND;
-        else if (driverW == L"DIRECTSOUND8")
+        else if (driverUpper == L"DIRECTSOUND8")
             outputDriver = irrklang::ESOD_DIRECT_SOUND_8;
-        else if (driverW == L"WINMM")
+        else if (driverUpper == L"WINMM")
             outputDriver = irrklang::ESOD_WIN_MM;
         else
             outputDriver = driverChoice;
@@ -1127,7 +1117,7 @@ void Extension::StopRecording(const TCHAR* name)
 void Extension::SaveToWAV(const TCHAR* path)
 {
     if (recorder && recorder->getRecordedAudioData())
-        writeWaveFile(DarkEdif::TStringToUTF8(path).c_str(), recorder->getAudioFormat(), recorder->getRecordedAudioData());
+        irrExtension::WriteWaveFile(DarkEdif::TStringToUTF8(path).c_str(), recorder->getAudioFormat(), recorder->getRecordedAudioData());
 }
 
 void Extension::LoadPlugins(const TCHAR* path)

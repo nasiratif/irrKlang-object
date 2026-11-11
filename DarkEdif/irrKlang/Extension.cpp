@@ -1,5 +1,5 @@
 #include "Common.hpp"
-#include "ikSystem.h"
+#include "irrExtension.hpp"
 
 ///
 /// EXTENSION CONSTRUCTOR/DESTRUCTOR
@@ -172,6 +172,10 @@ Extension::Extension(RunObject* const _rdPtr, const EDITDATA* const edPtr, const
 
 	LinkExpression(42, GetDriver);
 
+	// irrKlang initialization:
+	// -----
+	soundStopEventReceiver = std::make_unique<irrExtension::SoundStopEventReceiver>(this);
+
 	driver = DarkEdif::TStringToUTF8(edPtr->Props.GetPropertyStr("Device Driver"));
 
 	autoIrrKlang = edPtr->Props.IsPropChecked("Automatically create irrKlang device");
@@ -189,8 +193,8 @@ Extension::Extension(RunObject* const _rdPtr, const EDITDATA* const edPtr, const
 	else
 		driverChoice = irrklang::ESOD_AUTO_DETECT;
 
-	mList = irrklang::createAudioRecorderDeviceList(driverChoice);
-	sList = irrklang::createSoundDeviceList(driverChoice);
+	micList = irrklang::createAudioRecorderDeviceList(driverChoice);
+	sndDevList = irrklang::createSoundDeviceList(driverChoice);
 
 	if (autoIrrKlang)
 	{
@@ -208,6 +212,7 @@ Extension::Extension(RunObject* const _rdPtr, const EDITDATA* const edPtr, const
 
 	if (autoRecorder && !recorder && audio)
 		recorder = irrklang::createIrrKlangAudioRecorder(audio, driverChoice);
+	// -----
 
 	/*
 		This is where you'd do anything you'd do in CreateRunObject in the original SDK
@@ -240,10 +245,10 @@ Extension::Extension(RunObject* const _rdPtr, const EDITDATA* const edPtr, const
 
 Extension::~Extension()
 {
-	for (auto p : ikData.pSoundDatas) 
+	for (auto p : currentSounds) 
 	{
 		p.pSound->drop();
-		p.pSound = 0;
+		p.pSound = nullptr;
 	}
 
 	if (recorder)
@@ -287,7 +292,8 @@ REFLAG Extension::Handle()
 	*/
 
 	// Must update irrKlang manually if Use 3D buffers is enabled
-	if (audio && use3D) audio->update();
+	if (audio && use3D)
+		audio->update();
 
 	// WILL be called next loop
 	return REFLAG::NONE;

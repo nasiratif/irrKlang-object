@@ -40,7 +40,7 @@
     <ClCompile Include="..\Lib\Shared\DarkEdif.cpp">
       <Filter>Global to all extensions\Edif</Filter>
     </ClCompile>
-    <ClCompile Include="ikSystem.cpp">
+    <ClCompile Include="irrExtension.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Lib\Shared\SurfaceMultiPlat.cpp">
@@ -90,10 +90,10 @@
     <ClInclude Include="..\Inc\Shared\ObjectSelection.h">
       <Filter>Global to all extensions</Filter>
     </ClInclude>
-    <ClInclude Include="ikSystem.h">
+    <ClInclude Include="irrExtension.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Expbool.h">
+    <ClInclude Include="FusionBool.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,5 @@
 #include "Common.hpp"
-#include "ikSystem.h"
+#include "irrExtension.hpp"
 
 bool Extension::IsIrrKlangCreated()
 {
@@ -19,7 +19,7 @@ bool Extension::IsSoundPlaying(const TCHAR* pathToSound)
 
 bool Extension::IsSoundPaused(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -33,7 +33,7 @@ bool Extension::IsSoundPaused(const TCHAR* pathToSound)
 // irrKlang seemingly doesn't have any functions for checking if an ISound is playing or not, only by filename :|
 bool Extension::IsSoundPlayingID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -46,7 +46,7 @@ bool Extension::IsSoundPlayingID(int id)
 
 bool Extension::IsSoundPausedID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
