@@ -1,6 +1,5 @@
 #include "Common.hpp"
-#include "ikSystem.h"
-#include <Windows.h>
+#include "irrExtension.hpp"
 
 float Extension::GetListenerX()
 {
@@ -34,19 +33,19 @@ float Extension::GetListenerZR()
 
 float Extension::GetSoundX(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
 		return p.pSound->getPosition().X;
 	}
 
-	return 0.0f; // So that NaN won't assassinate us
+	return 0.0f;
 }
 
 float Extension::GetSoundY(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -58,7 +57,7 @@ float Extension::GetSoundY(const TCHAR* pathToSound)
 
 float Extension::GetSoundZ(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -70,7 +69,7 @@ float Extension::GetSoundZ(const TCHAR* pathToSound)
 
 float Extension::GetSoundMinD(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -82,7 +81,7 @@ float Extension::GetSoundMinD(const TCHAR* pathToSound)
 
 float Extension::GetSoundMaxD(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -94,7 +93,7 @@ float Extension::GetSoundMaxD(const TCHAR* pathToSound)
 
 float Extension::GetSoundXV(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -106,7 +105,7 @@ float Extension::GetSoundXV(const TCHAR* pathToSound)
 
 float Extension::GetSoundYV(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -118,7 +117,7 @@ float Extension::GetSoundYV(const TCHAR* pathToSound)
 
 float Extension::GetSoundZV(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -153,7 +152,7 @@ float Extension::GetListenerZV()
 
 float Extension::GetSoundVol(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -165,7 +164,7 @@ float Extension::GetSoundVol(const TCHAR* pathToSound)
 
 int Extension::GetPlaybackPos(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -177,7 +176,7 @@ int Extension::GetPlaybackPos(const TCHAR* pathToSound)
 
 int Extension::GetSoundLen(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -189,7 +188,7 @@ int Extension::GetSoundLen(const TCHAR* pathToSound)
 
 float Extension::GetPlaybackSpd(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -201,7 +200,7 @@ float Extension::GetPlaybackSpd(const TCHAR* pathToSound)
 
 float Extension::GetSoundPan(const TCHAR* pathToSound)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.fileName != DarkEdif::TStringToWide(pathToSound))
 			continue;
@@ -213,7 +212,7 @@ float Extension::GetSoundPan(const TCHAR* pathToSound)
 
 float Extension::GetSoundXID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -225,7 +224,7 @@ float Extension::GetSoundXID(int id)
 
 float Extension::GetSoundYID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -237,7 +236,7 @@ float Extension::GetSoundYID(int id)
 
 float Extension::GetSoundZID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -249,7 +248,7 @@ float Extension::GetSoundZID(int id)
 
 float Extension::GetSoundMinDID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -261,7 +260,7 @@ float Extension::GetSoundMinDID(int id)
 
 float Extension::GetSoundMaxDID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -273,7 +272,7 @@ float Extension::GetSoundMaxDID(int id)
 
 float Extension::GetSoundXVID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -285,7 +284,7 @@ float Extension::GetSoundXVID(int id)
 
 float Extension::GetSoundYVID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -297,7 +296,7 @@ float Extension::GetSoundYVID(int id)
 
 float Extension::GetSoundZVID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -309,7 +308,7 @@ float Extension::GetSoundZVID(int id)
 
 float Extension::GetSoundVolID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -321,7 +320,7 @@ float Extension::GetSoundVolID(int id)
 
 int Extension::GetPlaybackPosID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -333,7 +332,7 @@ int Extension::GetPlaybackPosID(int id)
 
 int Extension::GetSoundLenID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -345,7 +344,7 @@ int Extension::GetSoundLenID(int id)
 
 float Extension::GetPlaybackSpdID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -357,7 +356,7 @@ float Extension::GetPlaybackSpdID(int id)
 
 float Extension::GetSoundPanID(int id)
 {
-	for (auto p : ikData.pSoundDatas)
+	for (auto p : currentSounds)
 	{
 		if (p.ID != id)
 			continue;
@@ -369,80 +368,43 @@ float Extension::GetSoundPanID(int id)
 
 int Extension::GetMicCount()
 {
-	return mList->getDeviceCount();
+	return micList->getDeviceCount();
 }
 
 const TCHAR* Extension::GetMicDesc(int index)
 {
-	if (mList->getDeviceDescription(index))
-	{
-		std::string returnString = mList->getDeviceDescription(index);
-
-		std::tstring returnTString = DarkEdif::UTF8ToTString(returnString);
-
-		return Runtime.CopyString(returnTString.c_str());
-	}
-
-	return Runtime.CopyString(DarkEdif::TStringToWide(_T("")).c_str());
+	auto micDesc = micList->getDeviceDescription(index);
+	return micDesc ? Runtime.CopyString(DarkEdif::UTF8ToTString(micDesc).c_str()) : _T("");
 }
 
 const TCHAR* Extension::GetMicID(int index)
 {
-	if (mList->getDeviceID(index))
-	{
-		std::string returnString = mList->getDeviceID(index);
-
-		std::tstring returnTString = DarkEdif::UTF8ToTString(returnString);
-		
-		return Runtime.CopyString(returnTString.c_str());
-	}
-
-	return Runtime.CopyString(DarkEdif::TStringToWide(_T("")).c_str());
+	auto micID = micList->getDeviceID(index);
+	return micID ? Runtime.CopyString(DarkEdif::UTF8ToTString(micID).c_str()) : _T("");
 }
 
 int Extension::GetSoundDevCount()
 {
-	return sList->getDeviceCount();
+	return sndDevList->getDeviceCount();
 }
 
 const TCHAR* Extension::GetSoundDevDesc(int index)
 {
-	if (sList->getDeviceDescription(index))
-	{
-		std::string returnString = sList->getDeviceDescription(index);
-
-		std::tstring returnTString = DarkEdif::UTF8ToTString(returnString);
-
-		return Runtime.CopyString(returnTString.c_str());
-	}
-
-	return Runtime.CopyString(Runtime.CopyString(DarkEdif::TStringToWide(_T("")).c_str()));
+	auto devDesc = sndDevList->getDeviceDescription(index);
+	return devDesc ? Runtime.CopyString(DarkEdif::UTF8ToTString(devDesc).c_str()) : _T("");
 }
 
 const TCHAR* Extension::GetSoundDevID(int index)
 {
-	if (sList->getDeviceID(index))
-	{
-		std::string returnString = sList->getDeviceID(index);
-
-		std::tstring returnTString = DarkEdif::UTF8ToTString(returnString);
-
-		return Runtime.CopyString(returnTString.c_str());
-	}
-
-	return Runtime.CopyString(Runtime.CopyString(DarkEdif::TStringToWide(_T("")).c_str()));
+	auto devID = sndDevList->getDeviceID(index);
+	return devID ? Runtime.CopyString(DarkEdif::UTF8ToTString(devID).c_str()) : _T("");
 }
 
 const TCHAR* Extension::GetDriver()
 {
-	if (audio)
-	{
-		std::string returnString = audio->getDriverName();
+	if (!audio)
+		return _T("");
 
-		std::tstring returnTString = DarkEdif::UTF8ToTString(returnString);
-
-		return Runtime.CopyString(returnTString.c_str());
-	}
-
-	return Runtime.CopyString(Runtime.CopyString(DarkEdif::TStringToWide(_T("")).c_str()));
+	auto driver = audio->getDriverName();
+	return driver ? Runtime.CopyString(DarkEdif::UTF8ToTString(driver).c_str()) : _T("");
 }

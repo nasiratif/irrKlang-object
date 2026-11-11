@@ -5,9 +5,7 @@
 
 #pragma once
 #include "DarkEdif.hpp"
-#include <IrrKlang\irrKlang.h>
-
-#pragma comment (lib, "..\\Lib\\Windows\\irrKlang.lib")
+#include "irrExtension.hpp"
 
 class Extension final
 {
@@ -26,8 +24,8 @@ public:
 
 	irrklang::ISoundEngine* audio = NULL;
 	irrklang::IAudioRecorder* recorder = NULL;
-	irrklang::ISoundDeviceList* mList;
-	irrklang::ISoundDeviceList* sList;
+	irrklang::ISoundDeviceList* micList;
+	irrklang::ISoundDeviceList* sndDevList;
 	irrklang::vec3df listenerPos = irrklang::vec3df(0, 0, 0);
 	irrklang::vec3df listenerRot = irrklang::vec3df(0, 0, 0);
 	irrklang::vec3df listenerVel = irrklang::vec3df(0, 0, 0);
@@ -37,10 +35,13 @@ public:
 	std::string driver;
 	irrklang::E_SOUND_OUTPUT_DRIVER driverChoice;
 
+	std::vector<irrExtension::SoundData> currentSounds;
+	std::unique_ptr<irrExtension::SoundStopEventReceiver> soundStopEventReceiver;
+
 	Edif::Runtime Runtime;
 
 	static const int MinimumBuild = 254;
-	static const int Version = 3;
+	static const int Version = 4;
 
 	// If you change OEFLAGS, make sure you modify RUNDATA so the data is available, or you'll get crashes!
 	// For example, OEFLAGS::VALUES makes use of the AltVals rv struct.
