@@ -12,7 +12,7 @@ For more details, please see the extension's bundled HTML help file in the *Abou
 
 ## How to build the source code
 
-The extension source code resides in **DarkEdif\irrKlang**. It is based on a modified variant of the [DarkEdif SDK](https://github.com/SortaCore/MMF2Exts). Build the solution with Visual Studio 2019 & make sure you have the *Desktop development with C++* feature set installed.
+The extension source code resides in **DarkEdif/irrKlang**. It is based on a modified variant of the [DarkEdif SDK](https://github.com/SortaCore/MMF2Exts). Build the solution with Visual Studio 2019 & make sure you have the *Desktop development with C++* feature set installed.
 
 What you'll specifically need, most importantly, is the *Windows SDK* (v7.1a) and the *v141_xp* toolset.
 
