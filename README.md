@@ -19,3 +19,5 @@ What you'll specifically need, most importantly, is the *Windows SDK* (v7.1a) an
 Please note that this extension can only be compiled under the Unicode build configurations.
 
 **Unfortunately, as of writing, Ambiera has decided to take down the license to irrKlang Pro and even the download links to the free irrKlang library distribution. Since their license does not permit redistribution, I cannot include it in this repo. This extension can only be compiled if you already have the irrKlang includes/libraries on hand, which is one of the reasons I don't actively maintain nor recommend the use of this extension anymore.**
+
+If this poses a problem to you, you should probably consider my [SoundEx](https://github.com/nasiratif/SoundEx-object) extension instead.
